@@ -1,0 +1,362 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.Logo {
+    width: auto;
+    height: 50px;
+    float: left;
+    margin-left: 190px;
+}
+
+header {
+    background-color: white;
+    color: #fff;
+    padding: 7px;
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    z-index: 1000;
+    text-align: center;
+    font-size: 30px;
+    height: 50px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    margin-top: 9px;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 40px;
+    margin-left: 30px;
+}
+
+nav a {
+    color: black;
+    text-decoration: none;
+}
+
+.navigation-list a:hover {
+    color: orange;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+#banner {
+    background-image: url("https://static.vecteezy.com/system/resources/previews/000/677/302/original/abstract-technology-banner-background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 400px;
+    margin-top: 40px;
+}
+
+.heading-one {
+    font-size: 130px;
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+section {
+    padding: 20px;
+    margin-top: 20px;
+}
+
+section h2 {
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    background-color: darkorange;
+    padding: 15px;
+}
+
+.sub {
+    display: flex;
+    text-align: left;
+    justify-content: space-between;
+}
+
+.in {
+    margin: 20px;
+    background-color: white;
+    color: black;
+    width: 50%;
+    margin-left: 100px;
+}
+
+.out {
+    margin: 20px;
+    margin-left: 800px;
+    margin-right: 100px;
+    background-color: white;
+    color: black;
+    width: 50%;
+}
+
+img {
+    width: 25%;
+    height: auto;
+}
+
+#about {
+    display: flex;
+    text-align: left;
+}
+
+#about p {
+    margin-left: 50px;
+    margin-right: 400px;
+  font-size: 18px;
+}
+
+#about img {
+    width: 400px;
+    height: 400px;
+}
+
+#about h2 {
+    margin-left: 350px;
+}
+
+#home h2 {
+    background-color: darkblue;
+    color: White;
+    font-size: 60px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-family: Open Sans;
+}
+
+#home h3 {
+  background-color: Green;
+    color: White;
+    font-size: 60px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-family: Open Sans;
+  text-align: center;
+}
+
+#home h4 {
+  background-color: Gold;
+    color: White;
+    font-size: 60px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-family: Open Sans;
+  text-align: center;
+}
+
+
+#home h5 {
+  background-color: lightGreen;
+    color: White;
+    font-size: 60px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-family: Open Sans;
+  text-align: center;
+}
+
+#home h6 {
+  background-color: skyblue;
+    color: White;
+    font-size: 60px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-family: Open Sans;
+  text-align: center;
+}
+
+#home h1 {
+    font-size: 30px;  
+}
+
+#home p {
+    font-size: 20px;
+}
+
+.in img {
+    justify-content: center;
+}
+
+.out img {
+    justify-content: center;
+}
+
+.heading-two {
+    font-size: 40px;
+    color: White;
+}
+
+.Pixlr {
+    width: 400px;
+}
+
+
+.container {
+    position: relative;
+    overflow: hidden;
+    height: 150%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #f0f0f0;
+    opacity: 0;
+    animation: slideIn 1s ease forwards;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    max-width: 150px;
+    margin-left: 230px;
+    margin-right: 230px;
+}
+
+.container:nth-child(odd) {
+    background-color: #e0e0e0;
+}
+
+.container img {
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.5s ease; 
+}
+
+.container:hover img {
+    transform: scale(1.1);
+}
+
+.content {
+    text-align: center;
+    color: #333;
+    z-index: 1;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: space-around;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.container-contact,
+.map-container {
+    width: 45%; 
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.contact-form {
+    display: grid;
+    gap: 10px;
+}
+
+label {
+    font-weight: bold;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+button {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+iframe {
+    width: 100%;
+    height: 300px; 
+    border: 0;
+    border-radius: 5px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.project {
+  text-align: center;
+  padding: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.project.horizontal {
+  flex-direction: row;
+}
+
+.project img {
+  width: 40%;
+  max-width: 900px;
+  height: auto;
+  margin-right: 20px;
+  margin-left: 200px;
+}
+
+.project-details {
+  text-align: left;
+  margin-right: 250px;
+  margin-left: 20px;
+  font-size: 700px;
+  
+}
+
+.project h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.project p {
+  font-size: 18px;
+}
+
+
+[data-aos="fade-up"].aos-animate {
+  opacity: 1;
+}
