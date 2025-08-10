@@ -1,194 +1,912 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Portfolio Website</title>
-    <link rel="stylesheet" href="style.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>STARMEDIA — Web Development & Branding</title>
+  <meta name="description" content="STARMEDIA — Website development, branding, and creative digital solutions." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --accent:#e76d38;
+      --dark: #0f1724;
+      --muted: #eeeeee;
+      --bg: #0b0f16;
+      --card: #006aff;
+      --glass: rgba(255,255,255,0.50);
+      --maxw: 1100px;
+      --filter-bg: transparent;
+      --service-bg: #fff;
+      --service-title-color: #006aff;
+      --service-text-color: #000;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      font-family: Montserrat, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:#009dff;
+      color: #e6eef8;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.45;
+      scroll-behavior: smooth;
+    }
+    .container {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 24px;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: linear-gradient(180deg, rgba(20, 30, 60, 0.85), rgba(20, 30, 60, 0.7));
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+    }
+    .brand {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .logo {
+  width: 60px;
+  height: 60px;
+  background-color: black;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* keep the image inside the square */
+}
+
+.logo img {
+  width: 80%; /* adjust size */
+  height: auto;
+  object-fit: contain;
+}
+
+  
+    .container.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: nowrap;
+}
+
+  
+    
+    nav ul {
+      display: flex;
+      gap: 18px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      align-items: center;
+    }
+    nav a {
+      color: #dbeafe;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+    }
+    nav a:hover {
+      color: var(--accent);
+    }
+    .cta {
+      background: var(--accent);
+      padding: 10px 14px;
+      border-radius: 8px;
+      color: white;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: 0;
+      color: #cfe9ff;
+      font-size: 20px;
+    }
+    @media (max-width: 800px) {
+      nav ul {
+        display: none;
+      }
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 34px;
+      padding: 64px 0;
+      align-items: center;
+    }
+    .hero h1 {
+      font-size: 40px;
+      margin: 0 0 12px;
+      line-height: 1.05;
+    }
+    .hero p {
+      color: var(--muted);
+      font-size: 16px;
+      margin: 0 0 18px;
+    }
+    .hero .actions {
+      display: flex;
+      gap: 12px;
+    }
+   .hero-side {
+      background-image: url("https://edwardsandfinn.com/wp-content/uploads/2025/01/Edwards-and-Finn-Square-1024x1024.png");
+      background-size: cover;
+      background-position: center;
+      border-radius: 12px;
+      min-height: 350px;
+      box-shadow: 0 6px 20px rgba(2, 6, 23, 0.6);
+     background-color: white;
+    }
+
+    @media (max-width: 1000px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .hero-side {
+        order: 2;
+      }
+    }
+
+    /* Testimonials */
+    #testimonials {
+    padding: 40px 20px;
+    background: var(--bg-light);
+    max-width: 960px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  #testimonials h2 {
+    text-align: center;
+    font-weight: 700;
+    color: white;
+    font-size: 35px;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+  }
+
+.carousel-wrapper {
+  width: 1050px;       /* or whatever width you want */
+  overflow: hidden;
+  margin-left: -65px;
+  margin-right: auto;
+  position: relative; /* if you’re using pseudo-elements for fades */
+}
+
+
+  .testimonials-track {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 10px;
+    scrollbar-width: none; /* Firefox */
+  }
+  .testimonials-track {
+  display: flex;
+  gap: 50px;
+  width: max-content;
+  animation: scroll-left 20s linear infinite;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+
+ .testimonial-card {
+  flex: 0 0 280px;
+  background: #fff;         /* White background */
+  color: #222;              /* Dark text for readability */
+  border-radius: 10px;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 1px 2px rgba(0, 0, 0, 0.1);
+  padding: 10px 10px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.9rem;
+  min-height: 60px;
+}
+
+
+  .testimonial-photo {
+    width: 48px;
+    height: 48px;
+    margin-top: 10px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+  }
+
+  .testimonial-text-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .testimonial-text {
+  font-style: italic;
+  margin: 0 0 6px;
+  line-height: 1.3;
+  color: #333;  /* Darker text */
+}
+
+.testimonial-author {
+  font-weight: 700;
+  color: #e76d38; /* Accent color */
+  font-size: 1rem;
+  user-select: none;
+  margin-top: -5px;
+}
+ 
+ 
+    .stars {
+  color: #FFD700; /* gold yellow */
+  font-size: 1.2rem;
+  line-height: 1;
+  margin-bottom: 6px;
+  user-select: none;
+}
+
+    
+  /* Responsive */
+  @media (max-width: 600px) {
+    .testimonial-card {
+      flex: 0 0 220px;
+      padding: 14px 16px;
+      min-height: 80px;
+    }
+    .testimonial-photo {
+      width: 40px;
+      height: 40px;
+    }
+    .arrow-btn {
+      width: 36px;
+      height: 36px;
+      font-size: 1.6rem;
+      left: -28px !important;
+      right: -28px !important;
+    }
+  }
+
+    
+
+    /* Services - white background, blue titles, black text + icons + images */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin: 36px 0 48px 0;
+    }
+    .service {
+      padding: 18px;
+      border-radius: 12px;
+      background: #e76d38;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      min-height: 340px;
+    }
+    .service img.service-icon {
+      width: 200px;
+      height: 200px;
+      margin-bottom: 14px;
+      margin-top: 10px;
+      object-fit: contain;
+    }
+   
+    .service h3 {
+      margin: 0 0 8px;
+      color: white;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 25px;
+    }
+    
+    .service p {
+      color: white;
+      margin-top: 15px;
+      margin-left: 20px;
+      margin-right: 20px;
+      font-weight: 500;
+      flex-grow: 1;
+      font-size: 17px;
+    }
+    
+    
+    @media (max-width: 900px) {
+      .services {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Portfolio Filter - remove white background */
+    .portfolio-filter {
+      max-width: var(--maxw);
+      margin: 40px auto 16px auto;
+      background: var(--filter-bg);
+      padding: 0;
+      border-radius: 12px;
+      text-align: center;
+    }
+    .portfolio-filter button {
+      background: transparent;
+      border: 2px solid var(--service-title-color);
+      color: var(--service-title-color);
+      padding: 8px 16px;
+      margin: 0 6px;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+    }
+
+   .portfolio-filter button.active,
+.portfolio-filter button:hover {
+  background: #e76d38; /* orange color */
+  color: white;
+  border-color: #e76d38;
+}
+
+
+    #portfolio {
+      background: white;
+      padding: 40px 24px;
+      border-radius: 12px;
+      max-width: var(--maxw);
+      margin: 0 auto 60px auto;
+      color: black;
+    }
+
+    #portfolio h2 {
+      color: black;
+    }
+
+    /* Portfolio grid */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 28px 0;
+    }
+    .portfolio-item {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      display: block;
+    }
+    .portfolio-item img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.45s cubic-bezier(0.2, 0.9, 0.3, 1);
+      border-radius: 10px;
+    }
+    .portfolio-item:hover img {
+      transform: scale(1.06);
+    }
+    .portfolio-item .overlay {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 12px;
+      background: linear-gradient(180deg, transparent, rgba(2, 6, 23, 0.7));
+      color: white;
+      border-radius: 0 0 10px 10px;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    @media (max-width: 1000px) {
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .portfolio-item img {
+        height: 180px;
+      }
+    }
+    @media (max-width: 600px) {
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Split About + Contact side by side */
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin: 60px 0 80px 0;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @media (max-width: 900px) {
+      .split {
+        grid-template-columns: 1fr;
+      }
+    }
+    #about {
+      color: var(--muted);
+      font-weight: 800;
+      font-size: 17px;
+      background: #e76d38;
+      border-radius: 12px;
+      padding: 24px;
+      line-height: 1.55;
+    }
+    form label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      background: #fff;
+      color: #000;
+      font-weight: 400;
+      font-family: inherit;
+      font-size: 15px;
+    }
+    form button {
+      margin-top: 12px;
+      padding: 12px 18px;
+      border-radius: 10px;
+      border: 0;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+    form button:hover {
+      background-color: #0050cc;
+    }
+
+    footer {
+      padding: 24px 0;
+      color: var(--muted);
+      border-top: 1px solid rgba(255, 255, 255, 0.02);
+      font-size: 14px;
+      text-align: center;
+      margin-top: 60px;
+    }
+  </style>
 </head>
 <body>
-    <header class="l-header">
-        <nav class="nav bd-grid">
-            <div>
-                <a href="#" class="nav-logo">Marlon</a>
-            </div>
+  <header>
+  <div class="container nav">
+    <div class="brand">
+      <div class="logo">
+        <img src="https://www.freeiconspng.com/uploads/white-star-icon-20.png" alt="STARMEDIA Logo" />
+      </div>
+      <div style="font-weight:700">STARMEDIA</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:2px">Web Development • Branding</div>
+    </div>
 
-            <div class="nav-menu" id="nav-menu">
-                <ul class="nav-list">
-                    <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
-                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
-                    <li class="nav-item"><a href="#work" class="nav-link">Work</a></li>
-                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-            </div>
+      <nav>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div style="display:flex; gap:12px; align-items:center;">
+        <a class="cta" href="#contact">Get a Quote</a>
+        <a href="https://instagram.com/starmedianetwork" target="_blank" rel="noopener" aria-label="Instagram" style="display:flex; align-items:center; justify-content:center; width:42px; height:42px; background:#e1306c; border-radius:8px;">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false">
+            <path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5a4.25 4.25 0 004.25-4.25v-8.5A4.25 4.25 0 0016.25 3.5h-8.5zm8.74 2.46a1.06 1.06 0 110 2.12 1.06 1.06 0 010-2.12zM12 7a5 5 0 110 10 5 5 0 010-10zm0 1.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7z" />
+          </svg>
+        </a>
+        <button class="menu-toggle" aria-expanded="false" aria-label="Toggle menu">☰</button>
+      </div>
+    </div>
+  </header>
 
-            <div class="nav-toggle" id="nav-toggle">
-                <i class='bx bx-menu'></i>
-            </div>
-
-        </nav>
-    </header>
-
-    <main class="l-main">
-        <section class="home bd-grid" id="home">
-            <div class="home-data">
-                <h1 class="home-title">Hi, <br>I'm <span class="home-title-color">Marlon</span><br> Web Designer</h1>
-                <a href="#" class="button">Contact</a>
-            </div>
-
-            <div class="home-social">
-                <a href="#" class="home-social-icon"><i class='bx bxl-linkedin' ></i></a>
-                <a href="#" class="home-social-icon"><i class='bx bxl-instagram' ></i></a>
-                <a href="#" class="home-social-icon"><i class='bx bxl-github' ></i></a>
-            </div>
-
-            <div class="home-img">
-                <img src="https://i.postimg.cc/65sT6Z3M/perfil.png" alt="image">
-            </div>
-        </section>
-
-        <section class="about section" id="about">
-            <h2 class="section-title">About</h2>
-
-            <div class="about-container bd-grid">
-                <div class="about-img">
-                    <img src="https://i.postimg.cc/NjdgX2sq/about.jpg" alt="image">
-                </div>
-
-                <div>
-                    <h2 class="about-subtitle">I'm Marlon</h2>
-                    <p class="about-text">As a passionate web designer, I thrive on creating visually appealing and user-friendly websites. My journey in web design began with a fascination for how design can enhance user experience</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="skills section" id="skills">
-            <h2 class="section-title">Skills</h2>
-
-            <div class="skills-container bd-grid">
-                <div>
-                    <h2 class="skills-subtitle">Professional Skills</h2>
-                    <p class="skills-text">I love to think outside the box and bring unique ideas to life through design, I have proficiency in HTML, CSS, and JavaScript, that ensure that my designs are not only beautiful but also functional. I prioritize the needs and preferences of users, conducting research to understand their behaviors and preferences.</p>
-
-                    <div class="skills-data">
-                        <div class="skills-names">
-                            <i class='bx bxl-html5 skills-icon' ></i>
-                            <span class="skills-name">HTML5</span>
-                        </div>
-
-                        <div>
-                            <span class="skills-percentage">95%</span>
-                        </div>
-
-                        <div class="skills-bar skills-html"></div>
-                    </div>
-
-                    <div class="skills-data">
-                        <div class="skills-names">
-                            <i class='bx bxl-css3 skills-icon' ></i>
-                            <span class="skills-name">CSS3</span>
-                        </div>
-
-                        <div>
-                            <span class="skills-percentage">85%</span>
-                        </div>
-
-                        <div class="skills-bar skills-css"></div>
-                    </div>
-
-                    <div class="skills-data">
-                        <div class="skills-names">
-                            <i class='bx bxl-javascript skills-icon' ></i>
-                            <span class="skills-name">JAVASCRIPT</span>
-                        </div>
-
-                        <div>
-                            <span class="skills-percentage">65%</span>
-                        </div>
-
-                        <div class="skills-bar skills-js"></div>
-                    </div>
-
-                    <div class="skills-data">
-                        <div class="skills-names">
-                            <i class='bx bxs-paint skills-icon' ></i>
-                            <span class="skills-name">UX/UI</span>
-                        </div>
-
-                        <div>
-                            <span class="skills-percentage">85%</span>
-                        </div>
-
-                        <div class="skills-bar skills-ux"></div>
-                    </div>
-                </div>
-
-                <div>
-                    <img src="https://i.postimg.cc/52LWbPyt/work3.jpg" alt="image" class="skills-img">
-                </div>
-            </div>
-        </section>
-
-        <section class="work section" id="work">
-            <h2 class="section-title">Work</h2>
-
-            <div class="work-container bd-grid">
-                <div class="work-img">
-                    <img src="https://i.postimg.cc/NM0n9bsm/work1.jpg" alt="image">
-                </div>
-
-                <div class="work-img">
-                    <img src="https://i.postimg.cc/tJZmDTVg/work2.jpg" alt="image">
-                </div>
-
-                <div class="work-img">
-                    <img src="https://i.postimg.cc/52LWbPyt/work3.jpg" alt="image">
-                </div>
-
-                <div class="work-img">
-                    <img src="https://i.postimg.cc/fW1wsSCB/work4.jpg" alt="image">
-                </div>
-
-                <div class="work-img">
-                    <img src="https://i.postimg.cc/m2MTgZ6R/work5.jpg" alt="image">
-                </div>
-
-                <div class="work-img">
-                    <img src="https://i.postimg.cc/Qd3h9LR7/work6.jpg" alt="image">
-                </div>
-            </div>
-        </section>
-
-        <section class="contact section" id="contact">
-            <h2 class="section-title">Contact</h2>
-
-            <div class="contact-container bd-grid">
-                <form action="" class="contact-form">
-                    <input type="text" placeholder="Name" class="contact-input">
-                    <input type="email" placeholder="Email" class="contact-input">
-                    <textarea name="" id="" cols="0" rows="10" class="contact-input"></textarea>
-
-                    <input type="button" value="Send" class="contact-button button">
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <p class="footer-title">Marlon</p>
-
-        <div class="footer-social">
-            <a href="#" class="footer-icon"><i class='bx bxl-facebook'></i></a>
-            <a href="#" class="footer-icon"><i class='bx bxl-instagram' ></i></a>
-            <a href="#" class="footer-icon"><i class='bx bxl-twitter' ></i></a>
+  <main class="container">
+    <section class="hero">
+      <div>
+        <h1>Digital products &amp; branding that launch businesses forward</h1>
+        <p class="muted">STARMEDIA builds high-converting websites and unforgettable brand identities for small businesses, creators, and agencies.</p>
+        <div class="actions">
+          <a class="cta" href="#contact">Start a Project</a>
+          <a href="#portfolio" style="color:var(--muted);align-self:center;text-decoration:none;font-weight:700">See Portfolio →</a>
         </div>
 
-        <p>&#169; 2024 Copyright all rights reserved</p>
-    </footer>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px">
+          <div class="card">
+            <strong>Speed: </strong><div class="muted">Fast delivery & lean code</div>
+          </div>
+          <div class="card">
+            <strong>Support: </strong><div class="muted">Free 30-day post-launch support</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-side card" aria-hidden="true"></div>
+    </section>
 
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="main.js"></script>
+  <section id="testimonials" aria-label="Client testimonials">
+  <h2>What Our Clients Say</h2>
+ 
+
+  <div class="carousel-wrapper" tabindex="0">
+    <div class="testimonials-track">
+      <article class="testimonial-card" role="group" aria-label="Testimonial from Alex Johnson">
+        <img class="testimonial-photo" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Alex Johnson" />
+        <div class="testimonial-text-wrapper">
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          <p class="testimonial-text">“STARMEDIA transformed our website with stunning visuals and smooth functionality.”</p>
+          <div class="testimonial-author">Alex Johnson</div>
+        </div>
+      </article>
+
+      <article class="testimonial-card" role="group" aria-label="Testimonial from Maria Lopez">
+        <img class="testimonial-photo" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Maria Lopez" />
+        <div class="testimonial-text-wrapper">
+          <div class="stars" aria-hidden="true">★★★★☆</div>
+          <p class="testimonial-text">“Branding design elevated our identity to the next level. Quick and creative.”</p>
+          <div class="testimonial-author">Maria Lopez</div>
+        </div>
+      </article>
+
+      <article class="testimonial-card" role="group" aria-label="Testimonial from Liam Smith">
+        <img class="testimonial-photo" src="https://randomuser.me/api/portraits/men/65.jpg" alt="Liam Smith" />
+        <div class="testimonial-text-wrapper">
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          <p class="testimonial-text">“Amazing experience from start to finish. Excellent support and attention to detail.”</p>
+          <div class="testimonial-author">Liam Smith</div>
+        </div>
+      </article>
+
+      <article class="testimonial-card" role="group" aria-label="Testimonial from Emma Davis">
+        <img class="testimonial-photo" src="https://randomuser.me/api/portraits/women/22.jpg" alt="Emma Davis" />
+        <div class="testimonial-text-wrapper">
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          <p class="testimonial-text">“Fast, creative, and great communication. Our go-to for all things digital.”</p>
+          <div class="testimonial-author">Emma Davis</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+    <section id="services">
+      <h2 style="text-align:center; margin-bottom: 32px; color: white; font-size: 40px; font-weight: 900;">Our Services</h2>
+      <div class="services" role="list">
+        <div class="service" role="listitem">
+          <img src="https://i.imgur.com/Ircjevm.png" alt="Websites icon" class="service-icon" />
+          <h3>
+           
+            Websites
+          </h3>
+          <p>Responsive, SEO-optimized websites built with modern web technologies tailored for your brand.</p>
+        </div>
+        <div class="service" role="listitem">
+          <img src="https://i.imgur.com/dzT6qM3.png" alt="Logos icon" class="service-icon" />
+          <h3>
+           
+            Logos
+          </h3>
+          <p>Custom logo designs that capture your brand's personality and make a lasting impression.</p>
+        </div>
+        <div class="service" role="listitem">
+          <img src="https://i.imgur.com/ReWDbAE.png" alt="Branding icon" class="service-icon" />
+          <h3>
+           
+            Branding Services
+          </h3>
+          <p>Comprehensive branding solutions including style guides, business cards, and brand strategy consultation.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section id="portfolio" style="background-color: white; padding: 60px 20px;">
+      <h2 style="margin: 0 0 24px; color: var(--service-title-color); text-align: center;">
+        Our Work
+      </h2>
+
+      <div class="portfolio-filter" role="region" aria-label="Portfolio categories" style="text-align: center; margin-bottom: 24px;">
+        <button class="active" data-filter="all" aria-pressed="true">All</button>
+        <button data-filter="websites" aria-pressed="false">Websites</button>
+        <button data-filter="logos" aria-pressed="false">Logos</button>
+        <button data-filter="branding" aria-pressed="false">Branding Services</button>
+      </div>
+
+      <div class="portfolio-grid" role="list" style="max-width: 1200px; margin: 0 auto;">
+        <!-- Websites -->
+        <a href="#" class="portfolio-item websites" tabindex="0" aria-label="Project: Blue Sky Website" role="listitem">
+          <img src="https://knowledge.hubspot.com/hubfs/website-design-16-20241121-8236349.webp" alt="Screenshot of Blue Sky Website" />
+          <div class="overlay">Blue Sky Website</div>
+        </a>
+        <a href="#" class="portfolio-item websites" tabindex="0" aria-label="Project: Quantum Tech Website" role="listitem">
+          <img src="https://cdn.prod.website-files.com/660d2f5487880c4b5e088ca2/660d2f5487880c4b5e089aa9_rifKbPR8GXMsXysuYJF8RcblnffMfp8bgBl4WGF165YLjVNleF2G59GD4ulpS4ResGRNhQcBJ30jjEzBSAJkkXuUBzpLDYva3GhkGgiz1fIKGrGeRxbGCe5rs3JAaUisHqWTmWIymmJ2slGJ18RWTXA.jpeg" alt="Screenshot of Quantum Tech Website" />
+          <div class="overlay">Quantum Tech Website</div>
+        </a>
+        <a href="#" class="portfolio-item websites" tabindex="0" aria-label="Project: Green Leaf E-commerce" role="listitem">
+          <img src="https://www.housecallpro.com/wp-content/uploads/2024/08/Landscape-Home-Page-02--Lawnella-Elementor-scaled.webp" alt="Screenshot of Green Leaf E-commerce Website" />
+          <div class="overlay">Green Leaf E-commerce</div>
+        </a>
+
+        <!-- Logos -->
+        <a href="#" class="portfolio-item logos" tabindex="0" aria-label="Project: Oceanic Logo" role="listitem">
+          <img src="https://www.creativefabrica.com/wp-content/uploads/2020/10/02/Ocean-Logo-Vector-and-Symbols-Graphics-5809410-1-1-580x386.png" alt="Oceanic Logo Design" />
+          <div class="overlay">Oceanic Logo</div>
+        </a>
+        <a href="#" class="portfolio-item logos" tabindex="0" aria-label="Project: Stellar Brand Mark" role="listitem">
+          <img src="https://images.scalebranding.com/creative-stellar-logo-f50fe8b7-7201-495a-abba-00bab4c9b16f.png" alt="Stellar Brand Mark" />
+          <div class="overlay">Stellar Brand Mark</div>
+        </a>
+        <a href="#" class="portfolio-item logos" tabindex="0" aria-label="Project: Horizon Logo" role="listitem">
+          <img src="https://www.creativefabrica.com/wp-content/uploads/2022/11/03/Horizon-line-sun-logo-design-Graphics-44520879-1.jpg" alt="Horizon Logo Design" />
+          <div class="overlay">Horizon Logo</div>
+        </a>
+
+        <!-- Branding Services -->
+        <a href="#" class="portfolio-item branding" tabindex="0" aria-label="Project: Nova Style Guide" role="listitem">
+          <img src="https://www.promotionalproductswork.com/wp-content/uploads/2023/02/chick-fil-a-collection-2-crop.jpg" alt="Nova Style Guide" />
+          <div class="overlay">Chick-Fil-A Merch</div>
+        </a>
+        <a href="#" class="portfolio-item branding" tabindex="0" aria-label="Project: Aurora Business Cards" role="listitem">
+          <img src="https://media1.thehungryjpeg.com/thumbs2/ori_3784097_53dyxvzdx80xgpg64sm2vxle8n1qsw5ruixaxuvh_minimal-square-business-card.jpg" alt="Aurora Business Cards" />
+          <div class="overlay">Aurora Business Cards</div>
+        </a>
+        <a href="#" class="portfolio-item branding" tabindex="0" aria-label="Project: Eclipse Brand System" role="listitem">
+          <img src="https://static1.squarespace.com/static/53c358b6e4b01b8adb4d5870/t/63f919e0e85b1f0555c58261/1677269476995/souvenirs.jpeg?format=1500w" alt="Eclipse Brand System" />
+          <div class="overlay">Eclipse Brand System</div>
+        </a>
+      </div>
+    </section>
+    
+    <div id="portfolio-modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:1000;">
+  <div style="background:#fff; border-radius:12px; max-width:600px; width:90%; padding:24px; position:relative;">
+    <button id="modal-close" aria-label="Close modal" style="position:absolute; top:12px; right:12px; font-size:24px; border:none; background:none; cursor:pointer;">&times;</button>
+    <img id="modal-img" src="" alt="" style="width:100%; border-radius:8px; margin-bottom:16px;" />
+    <h3 id="modal-title" style="margin-top:0; color:#e76d38;"></h3>
+    <p id="modal-desc"></p>
+    <a id="modal-link" href="#" target="_blank" rel="noopener" style="color:#e76d38; font-weight:600; text-decoration:none;">More Info</a>
+  </div>
+</div>
+
+    
+    
+    
+    
+    
+
+    <!-- About + Contact side by side -->
+    <section class="split">
+      <section id="about">
+        <h2>About STARMEDIA</h2>
+        <p>Founded in 2020, STARMEDIA is a creative studio delivering beautifully designed websites and branding solutions with a personal touch. We work closely with small businesses and creatives to craft unique digital identities that grow your presence and impact.</p>
+      </section>
+      <section id="contact">
+        <h2>Contact Us</h2>
+        <form action="https://formspree.io/f/mpwlkygr" method="POST" aria-label="Contact form">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Your name" required />
+
+          <label for="email">Email</label>
+          <input id="email" name="_replyto" type="email" placeholder="Your email" required />
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="How can we help you?" rows="5" required></textarea>
+
+          <button type="submit">Send Message</button>
+        </form>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="text-align:center;">
+      &copy; 2025 STARMEDIA — All rights reserved. | <a href="mailto:contact@starmedia.com" style="color: var(--accent); text-decoration:none;">contact@starmedia.com</a>
+    </div>
+  </footer>
+
+  <script>
+ // ======= Portfolio Filter =======
+const track = document.querySelector('.testimonials-track');
+const btnLeft = document.querySelector('.arrow-left');
+const btnRight = document.querySelector('.arrow-right');
+const cardWidth = 316;
+
+const testimonials = Array.from(track.children);
+testimonials.forEach(card => {
+  const clone = card.cloneNode(true);
+  track.appendChild(clone);
+});
+
+let scrollPos = 0;
+const maxScroll = track.scrollWidth / 2;
+let scrollSpeed = 1;
+let isUserInteracting = false;
+
+function smoothScroll() {
+  if (!isUserInteracting) {
+    scrollPos += scrollSpeed;
+    if (scrollPos >= maxScroll) {
+      scrollPos = 0;
+    }
+    track.scrollLeft = scrollPos;
+  }
+  requestAnimationFrame(smoothScroll);
+}
+
+smoothScroll();
+
+function scrollLeft() {
+  isUserInteracting = true;
+  track.scrollBy({ left: -6, behavior: 'auto' });
+}
+
+function scrollRight() {
+  isUserInteracting = true;
+  track.scrollBy({ left: 6, behavior: 'auto' });
+}
+
+let scrollInterval;
+
+btnLeft.addEventListener('click', () => {
+  isUserInteracting = true;
+  track.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+  setTimeout(() => { isUserInteracting = false; }, 1000);
+});
+
+btnRight.addEventListener('click', () => {
+  isUserInteracting = true;
+  track.scrollBy({ left: cardWidth, behavior: 'smooth' });
+  setTimeout(() => { isUserInteracting = false; }, 1000);
+});
+
+btnLeft.addEventListener('mousedown', () => {
+  isUserInteracting = true;
+  scrollInterval = setInterval(scrollLeft, 10);
+});
+btnRight.addEventListener('mousedown', () => {
+  isUserInteracting = true;
+  scrollInterval = setInterval(scrollRight, 10);
+});
+btnLeft.addEventListener('mouseup', () => {
+  clearInterval(scrollInterval);
+  setTimeout(() => { isUserInteracting = false; }, 500);
+});
+btnRight.addEventListener('mouseup', () => {
+  clearInterval(scrollInterval);
+  setTimeout(() => { isUserInteracting = false; }, 500);
+});
+btnLeft.addEventListener('mouseleave', () => {
+  clearInterval(scrollInterval);
+  setTimeout(() => { isUserInteracting = false; }, 500);
+});
+btnRight.addEventListener('mouseleave', () => {
+  clearInterval(scrollInterval);
+  setTimeout(() => { isUserInteracting = false; }, 500);
+});
+
+ 
+</script>
+
+     <script>
+  const filterButtons = document.querySelectorAll('.portfolio-filter button');
+  const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      filterButtons.forEach(btn => {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-pressed', 'false');
+      });
+
+      button.classList.add('active');
+      button.setAttribute('aria-pressed', 'true');
+
+      const filter = button.dataset.filter;
+
+      portfolioItems.forEach(item => {
+        if (filter === 'all' || item.classList.contains(filter)) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
+
+     
+    
+    
+    <script>
+  const modal = document.getElementById('portfolio-modal');
+  const modalImg = document.getElementById('modal-img');
+  const modalTitle = document.getElementById('modal-title');
+  const modalDesc = document.getElementById('modal-desc');
+  const modalLink = document.getElementById('modal-link');
+  const modalClose = document.getElementById('modal-close');
+
+  document.querySelectorAll('.portfolio-item').forEach(item => {
+    item.addEventListener('click', e => {
+      e.preventDefault();
+
+      const imgSrc = item.querySelector('img').src;
+      const title = item.querySelector('.overlay').textContent;
+      const desc = item.getAttribute('data-description') || 'No description provided.';
+      const link = item.getAttribute('data-link') || '#';
+
+      modalImg.src = imgSrc;
+      modalImg.alt = title;
+      modalTitle.textContent = title;
+      modalDesc.textContent = desc;
+
+      if (link !== '#') {
+        modalLink.href = link;
+        modalLink.style.display = 'inline-block';
+      } else {
+        modalLink.style.display = 'none';
+      }
+
+      modal.style.display = 'flex';
+    });
+  });
+
+  modalClose.addEventListener('click', () => {
+    modal.style.display = 'none';
+  });
+
+  modal.addEventListener('click', e => {
+    if (e.target === modal) modal.style.display = 'none';
+  }); 
+    
+    
+    
+  </script>
 </body>
 </html>
